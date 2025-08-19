@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
 
-    <link rel="stylesheet" href="css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
     <link rel="stylesheet" href="css/main.css">
     <title>Nishanth Subramanya</title>
 </head>
@@ -256,10 +257,18 @@
                                     </p>
                                     <h5 class="work-head">Work</h5>
                                     <div class="work">
-                                        <a href="img/zb2.jpg" data-lightbox="img-3"><img src="img/zb2.jpg" alt=""></a>
-                                        <a href="img/Indu-Ninna.jpg" data-lightbox="img-1"><img src="img/Indu-Ninna.jpg" alt=""></a>
-                                        <a href="img/zb1.jpg" data-lightbox="img-2"><img src="img/zb1.jpg" alt=""></a>
-                                        <a href="img/zb3.png" data-lightbox="img-4"><img src="img/zb3.png" alt=""></a>
+                                        <a href="img/zb2.jpg" class="glightbox3" data-gallery="gallery1">
+                                            <img src="img/zb2.jpg" alt="image" />
+                                        </a>
+                                        <a href="img/zb1.jpg" class="glightbox3" data-gallery="gallery1">
+                                            <img src="img/zb1.jpg" alt="image" />
+                                        </a>
+                                        <a href="img/zb3.png" class="glightbox3" data-gallery="gallery1">
+                                            <img src="img/zb3.png" alt="image" />
+                                        </a>
+                                        <a href="img/Indu-Ninna.jpg" class="glightbox3" data-gallery="gallery1">
+                                            <img src="img/Indu-Ninna.jpg" alt="image" />
+                                        </a>
                                   </div>
                                 </li>
                          </ul>
@@ -284,7 +293,8 @@
 
      <script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
      <script src="js/navbar-fixed.js"></script>
-     <script src="js/lightbox.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
      <script>
          $(document).ready(function(){
             $('ul li a').click(function(){
@@ -293,6 +303,16 @@
             });
           });
      </script>
+
+    <script type="text/javascript">
+        const lightbox = GLightbox({
+            selector: '.glightbox3',
+            touchNavigation: true,
+            loop: false,
+            openEffect: 'fade',
+            closeEffect: 'fade',
+        });
+    </script>
 </body>
 </html>
 

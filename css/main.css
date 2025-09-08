@@ -253,9 +253,13 @@ nav ul li a{
 
 /* ------------------------Live Project Section-------------------- */
 .live-projects{
-    margin: 2.5rem 0;
+    margin: auto;
     padding: 2rem 0;
     border-bottom: 1px solid #f6f6fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .live-projects h1{
@@ -329,6 +333,34 @@ nav ul li a{
     width: 100px;
     height: 100px;
     /* border-radius: 50%; */
+}
+
+.splide__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+;}
+
+#thumbnail-carousel {
+    margin-top: 20px;
+
+    .splide__slide {
+        opacity: 0.6;
+    }
+
+    .splide__slide.is-active {
+        opacity: 1;
+        border: 3px solid transparent;
+        border-image: linear-gradient(to right, #02b3e4 0%, #02ccba 100%) 1;
+    }
+
+    .splide__arrow--next {
+        right: -2em;
+    }
+
+    .splide__arrow--prev {
+        left: -2.25em;
+    }
 }
 
 @media(max-width:772px){

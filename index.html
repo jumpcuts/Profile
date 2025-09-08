@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
 
     <link rel="stylesheet" href="css/main.css">
     <title>Nishanth Subramanya</title>
@@ -134,7 +135,7 @@
              <!-- Projects at Ottimate -->
              <section class="live-projects" id = "projects">
                     <h1>Production Code written is being used by thousands of users <br> as you view this page</h1>
-                    <div class="live-projects-container">
+                    <!-- <div class="live-projects-container">
                         <div class="live-project">
                             <div class="part1">
                                     <h3>Ottimate Dashboard</h3>
@@ -167,7 +168,53 @@
                                 <img src="/img/plateiq.jpeg" alt="" class="live-project-img">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
+                    <!-- Splide Image Slider -->
+                    <section
+                        class="splide"
+                        id="main-carousel"
+                        aria-label="Demonstration of Work Done">
+                        <div class="splide__track">
+                              <ul class="splide__list">
+                                  <li class="splide__slide">
+                                    <img src="/img/image-1.jpg" alt="Ottimate Dashboard 1">
+                                  </li>
+                                  <li class="splide__slide">
+                                    <img src="/img/image-2.jpg" alt="Ottimate Dashboard 2">
+                                  </li>
+                                  <li class="splide__slide">
+                                    <img src="/img/image-3.jpg" alt="Ottimate Dashboard 3">
+                                  </li>
+                                  <li class="splide__slide">
+                                    <img src="/img/image-4.jpg" alt="Ottimate Dashboard 4">
+                                  </li>
+                              </ul>
+                        </div>
+                    </section>
+                    <!-- Thumbnail Slider -->
+                    <section
+                        id="thumbnail-carousel"
+                        class="splide"
+                        aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Primary carousel above"
+                    >
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    <img src="/img/image-1.jpg" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="/img/image-2.jpg" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="/img/image-3.jpg" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="/img/image-4.jpg" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
              </section>
 
              <!-- Demo Projects -->
@@ -294,6 +341,7 @@
      <script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
      <script src="js/navbar-fixed.js"></script>
      <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 
      <script>
          $(document).ready(function(){
@@ -313,6 +361,57 @@
             closeEffect: 'fade',
         });
     </script>
+
+    <script>
+        var main = new Splide( '#main-carousel', {
+            type      : 'fade',
+            rewind    : true,
+            pagination: false,
+            arrows    : false,
+            width: 1000,
+            height: 600,
+            breakpoints: {
+                576: {
+                    width:500,
+                    height: 275
+                },
+                776: {
+                    width: 600,
+                    height: 325,
+                },
+                1200: {
+                    width: 700,
+                    height: 400,
+                },
+                1300: {
+                    width: 900,
+                    height: 475
+                }
+            }
+        } );
+
+        var thumbnails = new Splide( '#thumbnail-carousel', {
+            fixedWidth: 100,
+            fixedHeight: 60,
+            gap       : 10,
+            rewind    : true,
+            pagination: false,
+            isNavigation: true,
+            breakpoints: {
+                600: {
+                fixedWidth : 60,
+                fixedHeight: 44,
+                },
+            },
+        } );
+
+        main.sync(thumbnails);
+        main.mount();
+        thumbnails.mount();
+    </script>
+
+     </script>
+
 </body>
 </html>
 

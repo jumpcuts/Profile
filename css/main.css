@@ -209,7 +209,7 @@ nav ul li a{
 .skill-head, .tool-head{
     margin: 0;
     align-self: center;
-    font-size:
+    font-size: 1.25rem;
 }
 
 .skill-img-head{
@@ -263,12 +263,28 @@ nav ul li a{
 }
 
 .live-projects h1{
-    font-weight: 400;
-    /* letter-spacing: 2px; */
+    font-weight: 1200;
+    letter-spacing: 2px;
     text-align: center;
     font-size: 1.5rem;
     margin-left: 10px;
     margin-right: 10px;
+    background: linear-gradient(to right, #02b3e4 0%, #02ccba 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+}
+
+.live-projects h1::after{
+    content: "";
+    display: block;
+    width: 340px;
+    height: 3px;
+    margin: 6px auto 0;
+    background: linear-gradient(to right, #02b3e4 0%, #02ccba 100%);
+    border-radius: 2px;
 }
 
 .live-projects-container{
@@ -362,16 +378,19 @@ nav ul li a{
         left: -2.25em;
     }
 }
-
-@media(max-width:772px){
-    .live-project{
-        width: 80%;
-        min-width: 80%;
-        margin-right: 0;
-        height: auto;
+@media(max-width:1200px){
+    #thumbnail-carousel {
+        width: 600px;
     }
-    .live-project p{
-        font-size: 10px;
+}
+@media(max-width:772px){
+    #thumbnail-carousel {
+        width: 400px;
+    }
+}
+@media(max-width:556px){
+    #thumbnail-carousel {
+        width: 250px;
     }
 }
 /* ----------Demo Projects ----------------------  */
@@ -578,10 +597,6 @@ nav ul li a{
           padding: 1rem;
       }
 
-      .experience h1{
-        /* font-size: 1.25rem;
-        margin-top: 2.5rem; */
-      }
 
       .timeline-container{
           margin-top: 2.5rem;

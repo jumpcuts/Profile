@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-video@0.8.0/dist/css/splide-extension-video.min.css">
+
 
     <link rel="stylesheet" href="css/main.css">
     <title>Nishanth Subramanya</title>
@@ -134,7 +136,7 @@
 
              <!-- Projects at Ottimate -->
              <section class="live-projects" id = "projects">
-                    <h1>Production Code written is being used by thousands of users <br> as you view this page</h1>
+                    <h1>PRODUCTION FEATURES @ PlateIQ/ Ottimate</h1>
                     <!-- <div class="live-projects-container">
                         <div class="live-project">
                             <div class="part1">
@@ -177,18 +179,28 @@
                         aria-label="Demonstration of Work Done">
                         <div class="splide__track">
                               <ul class="splide__list">
-                                  <li class="splide__slide">
-                                    <img src="/img/image-1.jpg" alt="Ottimate Dashboard 1">
-                                  </li>
-                                  <li class="splide__slide">
-                                    <img src="/img/image-2.jpg" alt="Ottimate Dashboard 2">
-                                  </li>
-                                  <li class="splide__slide">
-                                    <img src="/img/image-3.jpg" alt="Ottimate Dashboard 3">
-                                  </li>
-                                  <li class="splide__slide">
-                                    <img src="/img/image-4.jpg" alt="Ottimate Dashboard 4">
-                                  </li>
+                                <li class="splide__slide">
+                                  <img src="/slides/slide_1.png" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                  <img src="/slides/slide_2.png" alt="">
+                                </li>
+                                <li class="splide__slide" data-splide-html-video="/video/purchase_order.mp4">
+                                  <img src="/slides/slide_3.png">
+                                </li>
+                                <li class="splide__slide" data-splide-html-video="/video/approval_policy.mp4">
+                                  <img src="/slides/slide_4.png">
+                                </li>
+                                <li class="splide__slide" data-splide-html-video="/video/pantry.mp4">
+                                  <img src="/slides/slide_5.png">
+                                  <button mat-button>Testing Button</button>
+                                </li>
+                                <li class="splide__slide" data-splide-html-video="/video/rebrand.mp4">
+                                  <img src="/slides/slide_6.png">
+                                </li>
+                                <li class="splide__slide">
+                                  <img src="/slides/slide_7.png" alt="">
+                                </li>
                               </ul>
                         </div>
                     </section>
@@ -201,23 +213,32 @@
                         <div class="splide__track">
                             <ul class="splide__list">
                                 <li class="splide__slide">
-                                    <img src="/img/image-1.jpg" alt="">
+                                    <img src="/slides/slide_1.png" alt="">
                                 </li>
                                 <li class="splide__slide">
-                                    <img src="/img/image-2.jpg" alt="">
+                                    <img src="/slides/slide_2.png" alt="">
                                 </li>
                                 <li class="splide__slide">
-                                    <img src="/img/image-3.jpg" alt="">
+                                    <img src="/slides/slide_3.png" alt="">
                                 </li>
                                 <li class="splide__slide">
-                                    <img src="/img/image-4.jpg" alt="">
+                                    <img src="/slides/slide_4.png" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="/slides/slide_5.png" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="/slides/slide_6.png" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="/slides/slide_7.png" alt="">
                                 </li>
                             </ul>
                         </div>
                     </section>
              </section>
 
-             <!-- Demo Projects -->
+             <!-- UI Demo Projects -->
              <section class="demo-projects">
                     <h1>UI DEVELOPMENT Practice Projects</h1>
                     <div class="demo-projects-container">
@@ -342,6 +363,8 @@
      <script src="js/navbar-fixed.js"></script>
      <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-video@0.8.0/dist/js/splide-extension-video.min.js"></script>
+
 
      <script>
          $(document).ready(function(){
@@ -406,7 +429,7 @@
         } );
 
         main.sync(thumbnails);
-        main.mount();
+        main.mount(window.splide.Extensions);
         thumbnails.mount();
     </script>
 

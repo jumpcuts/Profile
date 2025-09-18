@@ -204,6 +204,7 @@ nav ul li a{
     justify-content: center;
     flex-wrap: wrap;
     align-content: space-between;
+    row-gap: 10px;
 }
 
 .skill-head, .tool-head{

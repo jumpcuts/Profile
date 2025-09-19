@@ -10,8 +10,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-video@0.8.0/dist/css/splide-extension-video.min.css">
-
 
     <link rel="stylesheet" href="css/main.css">
     <title>Nishanth Subramanya</title>
@@ -342,100 +340,89 @@
 
      </div>
 
+        <!-- Scripts -->
+        <script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
+        <script src="js/navbar-fixed.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-video@0.8.0/dist/js/splide-extension-video.min.js"></script>
+        <script src="https://player.vimeo.com/api/player.js"></script>
 
-     <script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
-     <script src="js/navbar-fixed.js"></script>
-     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-video@0.8.0/dist/js/splide-extension-video.min.js"></script>
-    <script src="https://player.vimeo.com/api/player.js"></script>
-
-
-     <script>
-         $(document).ready(function(){
-            $('ul li a').click(function(){
-                $('li a').removeClass("active");
-                $(this).addClass("active");
+        <!-- GS LightBox -->
+        <script type="text/javascript">
+            const lightbox = GLightbox({
+                selector: '.glightbox3',
+                touchNavigation: true,
+                loop: false,
+                openEffect: 'fade',
+                closeEffect: 'fade',
             });
-          });
-     </script>
+        </script>
 
-    <script type="text/javascript">
-        const lightbox = GLightbox({
-            selector: '.glightbox3',
-            touchNavigation: true,
-            loop: false,
-            openEffect: 'fade',
-            closeEffect: 'fade',
-        });
-    </script>
-
-    <script>
-        var main = new Splide( '#main-carousel', {
-            type      : 'fade',
-            rewind    : true,
-            pagination: false,
-            arrows    : false,
-            width: 1000,
-            height: 600,
-            breakpoints: {
-                576: {
-                    width:500,
-                    height: 275,
-                },
-                776: {
-                    width: 600,
-                    height: 325,
-                },
-                1200: {
-                    width: 700,
-                    height: 400,
-                },
-                1300: {
-                    width: 900,
-                    height: 475
+        <!-- Splide Carousel -->
+        <script>
+            var main = new Splide( '#main-carousel', {
+                type      : 'fade',
+                rewind    : true,
+                pagination: false,
+                arrows    : false,
+                width: 1000,
+                height: 600,
+                breakpoints: {
+                    576: {
+                        width:500,
+                        height: 275,
+                    },
+                    776: {
+                        width: 600,
+                        height: 325,
+                    },
+                    1200: {
+                        width: 700,
+                        height: 400,
+                    },
+                    1300: {
+                        width: 900,
+                        height: 475
+                    }
                 }
-            }
-        } );
+            } );
 
-        var thumbnails = new Splide( '#thumbnail-carousel', {
-            fixedWidth: 100,
-            fixedHeight: 60,
-            gap       : 10,
-            rewind    : true,
-            pagination: false,
-            isNavigation: true,
-            breakpoints: {
-                600: {
-                fixedWidth : 60,
-                fixedHeight: 44,
+            var thumbnails = new Splide( '#thumbnail-carousel', {
+                fixedWidth: 100,
+                fixedHeight: 60,
+                gap       : 10,
+                rewind    : true,
+                pagination: false,
+                isNavigation: true,
+                breakpoints: {
+                    600: {
+                    fixedWidth : 60,
+                    fixedHeight: 44,
+                    },
                 },
-            },
-        } );
+            } );
 
-        main.sync(thumbnails);
-        main.mount(window.splide.Extensions);
-        thumbnails.mount();
+            main.sync(thumbnails);
+            main.mount();
+            thumbnails.mount();
 
-        // Ensure Vimeo iframes pause when navigating slides
-        const vimeoIframes = document.querySelectorAll('#main-carousel iframe[src*="player.vimeo.com"]');
-        const vimeoPlayers = Array.from(vimeoIframes).map(function(iframe){
-            try { return new Vimeo.Player(iframe); } catch(e) { return null; }
-        }).filter(Boolean);
+            // Ensure Vimeo iframes pause when navigating slides
+            const vimeoIframes = document.querySelectorAll('#main-carousel iframe[src*="player.vimeo.com"]');
+            const vimeoPlayers = Array.from(vimeoIframes).map(function(iframe){
+                try { return new Vimeo.Player(iframe); } catch(e) { return null; }
+            }).filter(Boolean);
 
-        function pauseAllVimeoPlayers(){
-            vimeoPlayers.forEach(function(player){
-                try { player.pause(); } catch(e) {}
-            });
-        }
+            function pauseAllVimeoPlayers(){
+                vimeoPlayers.forEach(function(player){
+                    try { player.pause(); } catch(e) {}
+                });
+            }
 
-        // Pause on movement and after move for reliability
-        main.on('move', pauseAllVimeoPlayers);
-        main.on('moved', pauseAllVimeoPlayers);
-    </script>
-
-     </script>
-
+            // Pause on movement and after move for reliability
+            main.on('move', pauseAllVimeoPlayers);
+            main.on('moved', pauseAllVimeoPlayers);
+        </script>
 </body>
 </html>
 

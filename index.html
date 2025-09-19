@@ -348,6 +348,7 @@
      <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-video@0.8.0/dist/js/splide-extension-video.min.js"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
 
 
      <script>
@@ -415,6 +416,22 @@
         main.sync(thumbnails);
         main.mount(window.splide.Extensions);
         thumbnails.mount();
+
+        // Ensure Vimeo iframes pause when navigating slides
+        const vimeoIframes = document.querySelectorAll('#main-carousel iframe[src*="player.vimeo.com"]');
+        const vimeoPlayers = Array.from(vimeoIframes).map(function(iframe){
+            try { return new Vimeo.Player(iframe); } catch(e) { return null; }
+        }).filter(Boolean);
+
+        function pauseAllVimeoPlayers(){
+            vimeoPlayers.forEach(function(player){
+                try { player.pause(); } catch(e) {}
+            });
+        }
+
+        // Pause on movement and after move for reliability
+        main.on('move', pauseAllVimeoPlayers);
+        main.on('moved', pauseAllVimeoPlayers);
     </script>
 
      </script>

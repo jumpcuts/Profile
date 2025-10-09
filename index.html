@@ -21,7 +21,7 @@
          <div class="sidebar">
              <nav>
                 <ul>
-                    <li ><a href="#about" class="active">About</a></li>
+                    <li ><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#experience">Experience</a></li>
                 </ul>
@@ -427,6 +427,23 @@
         <!-- Smooth scroll to section on external deep-link (e.g., /#projects) -->
         <script>
             document.addEventListener('DOMContentLoaded', function () {
+                var navLinks = Array.from(document.querySelectorAll('.sidebar nav a[href^="#"]'));
+
+                function normalizeHash(h) {
+                    if (!h) return '';
+                    var id = decodeURIComponent(h.replace('#', ''));
+                    return '#' + id;
+                }
+
+                function setActiveFromHash(hash) {
+                    var target = normalizeHash(hash) || '#about';
+                    navLinks.forEach(function (a) { a.classList.remove('active'); });
+                    var match = navLinks.find(function (a) {
+                        try { return normalizeHash(a.getAttribute('href')) === target; } catch (e) { return false; }
+                    });
+                    if (match) match.classList.add('active');
+                }
+
                 function scrollToHash(hash, replace) {
                     if (!hash) return;
                     var id = decodeURIComponent(hash.replace('#', ''));
@@ -445,14 +462,26 @@
                     }
                 }
 
+                // Sync active state initially
+                setActiveFromHash(location.hash);
+
                 // If arriving with a hash, smoothly scroll to it
                 if (location.hash) {
                     scrollToHash(location.hash, true);
                 }
 
-                // If the hash changes (e.g., manual change), also scroll
+                // If the hash changes (e.g., manual change), sync and scroll
                 window.addEventListener('hashchange', function () {
+                    setActiveFromHash(location.hash);
                     scrollToHash(location.hash, false);
+                });
+
+                // Immediate feedback on click
+                navLinks.forEach(function(a){
+                    a.addEventListener('click', function () {
+                        var hrefHash = a.getAttribute('href') || '';
+                        setActiveFromHash(hrefHash);
+                    });
                 });
             });
         </script>

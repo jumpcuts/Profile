@@ -423,6 +423,39 @@
             main.on('move', pauseAllVimeoPlayers);
             main.on('moved', pauseAllVimeoPlayers);
         </script>
+
+        <!-- Smooth scroll to section on external deep-link (e.g., /#projects) -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                function scrollToHash(hash, replace) {
+                    if (!hash) return;
+                    var id = decodeURIComponent(hash.replace('#', ''));
+                    var el = document.getElementById(id);
+                    if (!el) return;
+                    // Defer to ensure layout is ready
+                    requestAnimationFrame(function(){
+                        try {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } catch (e) {
+                            el.scrollIntoView(true);
+                        }
+                    });
+                    if (replace) {
+                        try { history.replaceState(null, '', '#' + id); } catch (e) {}
+                    }
+                }
+
+                // If arriving with a hash, smoothly scroll to it
+                if (location.hash) {
+                    scrollToHash(location.hash, true);
+                }
+
+                // If the hash changes (e.g., manual change), also scroll
+                window.addEventListener('hashchange', function () {
+                    scrollToHash(location.hash, false);
+                });
+            });
+        </script>
 </body>
 </html>
 
